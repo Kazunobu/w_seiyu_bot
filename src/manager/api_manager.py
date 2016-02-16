@@ -12,10 +12,14 @@ class ApiManager:
 	config.read(CONFIG_FILE)
 
 	# TwitterのAPIキー
-	CONSUMER_KEY = config.get("API", "CONSUMER_KEY")
-	CONSUMER_SECRET = config.get("API", "CONSUMER_SECRET")
-	ACCESS_TOKEN = config.get("API", "ACCESS_TOKEN")
-	ACCESS_TOKEN_SECRET = config.get("API", "ACCESS_TOKEN_SECRET")	
+	TW_CONSUMER_KEY = config.get("API", "TW_CONSUMER_KEY")
+	TW_CONSUMER_SECRET = config.get("API", "TW_CONSUMER_SECRET")
+	TW_ACCESS_TOKEN = config.get("API", "TW_ACCESS_TOKEN")
+	TW_ACCESS_TOKEN_SECRET = config.get("API", "TW_ACCESS_TOKEN_SECRET")
+
+	# GOOGLEのカスタム検索APIキーと検索エンジンID
+	GOOGLE_API_KEY = config.get("API", "GOOGLE_API_KEY")
+	GOOGLE_CX = config.get("API", "GOOGLE_CX")
 	
 	# KLOUTのAPIキー
 	KLOUT_KEY = config.get("API", "KLOUT_KEY")	
