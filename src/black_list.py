@@ -10,10 +10,10 @@ from manager.black_list_manager import BlackListManager
 from manager.tweet_manager import TweetManager
 
 twitter = twython.Twython(
-	    	app_key = ApiManager.CONSUMER_KEY,
-	    	app_secret = ApiManager.CONSUMER_SECRET,
-	    	oauth_token = ApiManager.ACCESS_TOKEN,
-	    	oauth_token_secret = ApiManager.ACCESS_TOKEN_SECRET
+	    	app_key = ApiManager.TW_CONSUMER_KEY,
+	    	app_secret = ApiManager.TW_CONSUMER_SECRET,
+	    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
+	    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
 		)
 
 def main():

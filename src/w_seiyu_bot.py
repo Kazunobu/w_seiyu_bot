@@ -17,10 +17,10 @@ TEMPFILE = 'w_seiyu_temp'
 
 def tweet_image(seiyu):
 	twitter = twython.Twython(
-    	app_key = ApiManager.CONSUMER_KEY,
-    	app_secret = ApiManager.CONSUMER_SECRET,
-    	oauth_token = ApiManager.ACCESS_TOKEN,
-    	oauth_token_secret = ApiManager.ACCESS_TOKEN_SECRET
+    	app_key = ApiManager.TW_CONSUMER_KEY,
+    	app_secret = ApiManager.TW_CONSUMER_SECRET,
+    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
+    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
 	)
 
 	photo = open(TEMPFILE, 'rb')
@@ -29,8 +29,8 @@ def tweet_image(seiyu):
 def main():
 
 	# 検索エンジンを決定
-	finder = None
-	searchmode = random.randint(1, 4)
+	finder = YahooImageFinder()
+	searchmode = random.randint(1, 3)
 	if searchmode == 1:
 		finder = YahooImageFinder()
 	elif searchmode == 2:
@@ -38,7 +38,7 @@ def main():
 	else:
 		finder = GoogleImageFinder()
 	
-	# 声優•取得位置
+	# 声優•取得位置	
 	seiyu_manager = SeiyuManager()
 	seiyu = seiyu_manager.get_seiyu()
 	print seiyu
@@ -60,7 +60,6 @@ def main():
 
 	# ツイート
 	result = tweet_image(seiyu)
-	print result
 	
 	# ツイート内容を登録
 	tweet_manager = TweetManager()

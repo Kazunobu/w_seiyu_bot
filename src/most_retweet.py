@@ -9,10 +9,10 @@ now = datetime.datetime.today()
 TODAY = datetime.date(now.year, now.month, now.day)
 
 twitter = twython.Twython(
-	    	app_key = ApiManager.CONSUMER_KEY,
-	    	app_secret = ApiManager.CONSUMER_SECRET,
-	    	oauth_token = ApiManager.ACCESS_TOKEN,
-	    	oauth_token_secret = ApiManager.ACCESS_TOKEN_SECRET
+	    	app_key = ApiManager.TW_CONSUMER_KEY,
+	    	app_secret = ApiManager.TW_CONSUMER_SECRET,
+	    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
+	    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
 		)
 
 count = 0
