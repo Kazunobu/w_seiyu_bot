@@ -4,9 +4,10 @@
 import urllib
 import urllib2
 import json
+from manager.api_manager import ApiManager
 
 # APIのURL
-API_URL = "http://ajax.googleapis.com/ajax/services/search/images?q=%s&v=1.0&rsz=large"
+API_URL = "https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={CX}&searchType=image&q={QUERY}start={IDX}&num=1"
 
 class GoogleImageFinder:
 	u''' googleの画像検索を行う  '''
@@ -17,17 +18,15 @@ class GoogleImageFinder:
 	def find_image(self, seiyu, idx):
 
 		#Googleのみapiを利用
-		URL = API_URL % urllib.quote(seiyu)
-		url = URL + "&start=%s" % (idx-1)
+		prop_dict = dict(API_KEY=ApiManager.GOOGLE_API_KEY, CX=ApiManager.GOOGLE_CX, QUERY=urllib.quote(seiyu), IDX=idx)
+		url = API_URL.format(**prop_dict)
 
 		f = urllib2.urlopen(url)
 		data = json.loads(f.read())
 
-		# 念のため失敗ははじく
 		imgurl = None
-		if data['responseStatus'] != 400:
-			for result in data['responseData']['results']:
-				imgurl = result['url']
-				break
+		for result in data['items']:
+			imgurl = result['link']
+			break
 
 		return imgurl
