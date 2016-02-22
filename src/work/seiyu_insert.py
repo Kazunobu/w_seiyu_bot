@@ -93,11 +93,52 @@ SEIYU = [
 '西明日香,nishi_asuka',
 '明坂聡美,akesaka_satomi',
 '浅倉杏美,asakura_azumi',
-'白石涼子,shiraishi_ryoko'
+'白石涼子,shiraishi_ryoko',
+'雨宮天,amamiya_sora',
+'麻倉もも,asakura_momo',
+'夏川椎菜,natukawa_shina',
+'木戸衣吹,kido_ibuki',
+'山下七海,yamasita_nanami',
+'大橋彩香,oohashi_ayaka',
+'田所あずさ,tadokoro_azusa',
+'水瀬いのり,mianse_inori',
+'上田麗奈,ueda_reina',
+'田辺留依,tanabe_rui',
+'芹澤優,serizawa_yu',
+'豊田萌絵,toyota_moe',
+'井澤詩織,izawa_shiori',
+'荒川美穂,arakawa_miho',
+'高森奈津美,takamori_natsumi',
+'木村珠莉,kimura_jyuri',
+'佳村はるか,yoshimura_haruka',
+'千菅春香,chisuga_haruka',
+'山北早紀,yamakita_saki',
+'茜屋日海夏,akaneya_himika',
+'澁谷梓希,shibuya_azuki',
+'久保田未夢,kubota_miyu',
+'若井友希,wakai_yuki',
+'i☆Ris,i_ris',
+'田中美海,tanaka_minami',
+'吉岡茉祐,yoshioka_mayu',
+'永野愛理,eino_airi',
+'青山吉能,aoyama_yoshino',
+'奥野香耶,okuno_kaya',
+'高木美佑,takagi_miyu',
+'大空直美,ozora_naomi',
+'福原綾香,fukuhara_ayaka',
+'原紗友里,hara_sayuri',
+'黒沢ともよ,kurosawa_tomoyo',
+'五十嵐裕美,igarashi_hiromi',
+'青木瑠璃子,aoki_ruriko',
+'松嵜麗,matuzaki_rei',
+'佐藤あずさ,satou_azusa',
+'渡部優衣,watanabe_yui'
 ]
 
 # DBオープン
 db = sqlite3.connect(DB_FILE)
+
+db.execute('delete from seiyu_tbl')
 sql = 'insert into seiyu_tbl (name, name_e, birthday) values (?, ?, ?)'
 for s in SEIYU:
 	db.execute(sql, (s.split(",")[0].decode('utf-8'),s.split(",")[1],''))
