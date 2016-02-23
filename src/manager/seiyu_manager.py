@@ -15,6 +15,7 @@ class SeiyuManager:
 		u''' 初期化 '''
 
 	def get_seiyu(self):
+		u''' ツイート対象の声優を取得する '''
 		
 		db = sqlite3.connect(DB_FILE)
 
@@ -31,3 +32,17 @@ class SeiyuManager:
 		db.close()
 
 		return seiyu.encode('utf-8')
+
+	def get_birthday_seiyus(self, birthday):
+		u''' 誕生日の声優一覧を取得して返す '''
+
+		sql = "select name from seiyu_tbl where birthday = ?"
+
+		db = sqlite3.connect(DB_FILE)
+		
+		results = db.execute(sql, (birthday,)).fetchall()
+		names = [ result[0] for result in results]
+
+		db.close()
+
+		return names		
