@@ -43,7 +43,7 @@ def main():
 	seiyu = seiyu_manager.get_seiyu()
 	print seiyu
 	
-	idx = random.randint(1, 50)
+	idx = random.randint(1, ApiManager.FIND_COUNT)
 
 	# 画像URI取得
 	image_uri = finder.find_image(seiyu, idx)
@@ -52,7 +52,7 @@ def main():
 	# ブラックリストチェック
 	black_list_manager = BlackListManager()
 	while black_list_manager.contains(seiyu.decode('utf-8'), image_uri):
-		idx = random.randint(1, 50)
+		idx = random.randint(1, ApiManager.FIND_COUNT)
 		image_uri = finder.find_image(seiyu, idx)
 
 	# 画像のダウンロード
