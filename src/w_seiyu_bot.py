@@ -50,10 +50,10 @@ def main():
 	print image_uri
 
 	# ブラックリストチェック
-	black_list_manager = BlackListManager()
-	while black_list_manager.contains(seiyu.decode('utf-8'), image_uri):
-		idx = random.randint(1, ApiManager.FIND_COUNT)
-		image_uri = finder.find_image(seiyu, idx)
+	# black_list_manager = BlackListManager()
+	# while black_list_manager.contains(seiyu.decode('utf-8'), image_uri):
+	# 	idx = random.randint(1, ApiManager.FIND_COUNT)
+	# 	image_uri = finder.find_image(seiyu, idx)
 
 	# 画像のダウンロード
 	urllib.urlretrieve(image_uri, TEMPFILE)
@@ -62,8 +62,8 @@ def main():
 	result = tweet_image(seiyu)
 	
 	# ツイート内容を登録
-	tweet_manager = TweetManager()
-	tweet_manager.save_tweet(result['id'], seiyu.decode('utf-8'), image_uri.decode('utf-8'))
+	# tweet_manager = TweetManager()
+	# tweet_manager.save_tweet(result['id'], seiyu.decode('utf-8'), image_uri.decode('utf-8'))
 
 if __name__ == "__main__":
 	main()
