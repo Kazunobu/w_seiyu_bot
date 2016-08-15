@@ -3,10 +3,10 @@
 
 import sqlite3
 import random
-from api_manager import ApiManager
+from config_manager import ConfigManager
 
 #DBファイル
-DB_FILE = ApiManager.DB_FILE
+DB_FILE = ConfigManager.DB_FILE
 
 class CheckUserManager:
 	u''' チェックユーザーの管理を行う  '''

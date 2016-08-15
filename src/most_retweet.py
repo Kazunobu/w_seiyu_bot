@@ -3,16 +3,16 @@
 
 import twython
 import datetime
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 
 now = datetime.datetime.today()
 TODAY = datetime.date(now.year, now.month, now.day)
 
 twitter = twython.Twython(
-	    	app_key = ApiManager.TW_CONSUMER_KEY,
-	    	app_secret = ApiManager.TW_CONSUMER_SECRET,
-	    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
-	    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
+	    	app_key = ConfigManager.TW_CONSUMER_KEY,
+	    	app_secret = ConfigManager.TW_CONSUMER_SECRET,
+	    	oauth_token = ConfigManager.TW_ACCESS_TOKEN,
+	    	oauth_token_secret = ConfigManager.TW_ACCESS_TOKEN_SECRET
 		)
 
 count = 0

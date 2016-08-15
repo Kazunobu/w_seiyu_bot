@@ -7,20 +7,20 @@ import random
 import json
 import urllib2
 import twython
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 from manager.seiyu_manager import SeiyuManager
 
 sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
 # KLOUT関連
-ID_URL = 'http://api.klout.com/v2/identity.json/twitter?screenName=%s&key=' + ApiManager.KLOUT_KEY
-SCORE_URL = 'http://api.klout.com/v2/user.json/%s/score?key=' + ApiManager.KLOUT_KEY
+ID_URL = 'http://api.klout.com/v2/identity.json/twitter?screenName=%s&key=' + ConfigManager.KLOUT_KEY
+SCORE_URL = 'http://api.klout.com/v2/user.json/%s/score?key=' + ConfigManager.KLOUT_KEY
 
 twitter = twython.Twython(
-    app_key = ApiManager.TW_CONSUMER_KEY,
-    app_secret = ApiManager.TW_CONSUMER_SECRET,
-    oauth_token = ApiManager.TW_ACCESS_TOKEN,
-    oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
+    app_key = ConfigManager.TW_CONSUMER_KEY,
+    app_secret = ConfigManager.TW_CONSUMER_SECRET,
+    oauth_token = ConfigManager.TW_ACCESS_TOKEN,
+    oauth_token_secret = ConfigManager.TW_ACCESS_TOKEN_SECRET
 )
 
 # キーワードを特定
@@ -47,7 +47,7 @@ for result in results['statuses']:
 		
 		# KLOUTスコアが基準値以上ならフォロー
 		f_score = float(score)
-		if f_score > int(ApiManager.KLOUT_SCORE):
+		if f_score > int(ConfigManager.KLOUT_SCORE):
 			twitter.create_friendship(screen_name=screen_name, follow="true")
 			print u"%sさんをフォローしました。" % screen_name
 			print u"KLOUT:%s" % score

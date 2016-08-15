@@ -4,7 +4,7 @@
 import random
 import urllib
 import twython
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 from manager.seiyu_manager import SeiyuManager
 from manager.black_list_manager import BlackListManager
 from manager.tweet_manager import TweetManager
@@ -17,10 +17,10 @@ TEMPFILE = 'w_seiyu_temp'
 
 def tweet_image(seiyu):
 	twitter = twython.Twython(
-    	app_key = ApiManager.TW_CONSUMER_KEY,
-    	app_secret = ApiManager.TW_CONSUMER_SECRET,
-    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
-    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
+    	app_key = ConfigManager.TW_CONSUMER_KEY,
+    	app_secret = ConfigManager.TW_CONSUMER_SECRET,
+    	oauth_token = ConfigManager.TW_ACCESS_TOKEN,
+    	oauth_token_secret = ConfigManager.TW_ACCESS_TOKEN_SECRET
 	)
 
 	photo = open(TEMPFILE, 'rb')
@@ -43,7 +43,7 @@ def main():
 	seiyu = seiyu_manager.get_seiyu()
 	print seiyu
 	
-	idx = random.randint(1, ApiManager.FIND_COUNT)
+	idx = random.randint(1, ConfigManager.FIND_COUNT)
 
 	# 画像URI取得
 	image_uri = finder.find_image(seiyu, idx)
@@ -52,7 +52,7 @@ def main():
 	# ブラックリストチェック
 	# black_list_manager = BlackListManager()
 	# while black_list_manager.contains(seiyu.decode('utf-8'), image_uri):
-	# 	idx = random.randint(1, ApiManager.FIND_COUNT)
+	# 	idx = random.randint(1, ConfigManager.FIND_COUNT)
 	# 	image_uri = finder.find_image(seiyu, idx)
 
 	# 画像のダウンロード

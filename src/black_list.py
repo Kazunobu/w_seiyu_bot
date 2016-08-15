@@ -3,17 +3,17 @@
 
 import sqlite3
 import twython
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 from manager.check_user_manager import CheckUserManager
 from manager.seiyu_manager import SeiyuManager
 from manager.black_list_manager import BlackListManager
 from manager.tweet_manager import TweetManager
 
 twitter = twython.Twython(
-	    	app_key = ApiManager.TW_CONSUMER_KEY,
-	    	app_secret = ApiManager.TW_CONSUMER_SECRET,
-	    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
-	    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
+	    	app_key = ConfigManager.TW_CONSUMER_KEY,
+	    	app_secret = ConfigManager.TW_CONSUMER_SECRET,
+	    	oauth_token = ConfigManager.TW_ACCESS_TOKEN,
+	    	oauth_token_secret = ConfigManager.TW_ACCESS_TOKEN_SECRET
 		)
 
 def main():

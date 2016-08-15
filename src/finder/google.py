@@ -4,7 +4,7 @@
 import urllib
 import urllib2
 import json
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 
 # APIのURL
 API_URL = "https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={CX}&searchType=image&q={QUERY}start={IDX}&num=1"
@@ -18,7 +18,7 @@ class GoogleImageFinder:
 	def find_image(self, seiyu, idx):
 
 		#Googleのみapiを利用
-		prop_dict = dict(API_KEY=ApiManager.GOOGLE_API_KEY, CX=ApiManager.GOOGLE_CX, QUERY=urllib.quote(seiyu), IDX=idx)
+		prop_dict = dict(API_KEY=ConfigManager.GOOGLE_API_KEY, CX=ConfigManager.GOOGLE_CX, QUERY=urllib.quote(seiyu), IDX=idx)
 		url = API_URL.format(**prop_dict)
 
 		f = urllib2.urlopen(url)

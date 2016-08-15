@@ -6,7 +6,7 @@ import os
 import random
 import urllib
 import twython
-from manager.api_manager import ApiManager
+from manager.config_manager import ConfigManager
 from manager.seiyu_manager import SeiyuManager
 from finder.yahoo import YahooImageFinder
 from finder.bing import BingImageFinder
@@ -17,10 +17,10 @@ TEMPFILE = 'w_seiyu_temp'
 
 def tweet_birthday_image(seiyu, tempfile):
 	twitter = twython.Twython(
-    	app_key = ApiManager.TW_CONSUMER_KEY,
-    	app_secret = ApiManager.TW_CONSUMER_SECRET,
-    	oauth_token = ApiManager.TW_ACCESS_TOKEN,
-    	oauth_token_secret = ApiManager.TW_ACCESS_TOKEN_SECRET
+    	app_key = ConfigManager.TW_CONSUMER_KEY,
+    	app_secret = ConfigManager.TW_CONSUMER_SECRET,
+    	oauth_token = ConfigManager.TW_ACCESS_TOKEN,
+    	oauth_token_secret = ConfigManager.TW_ACCESS_TOKEN_SECRET
 	)
 
 	photo = open(tempfile, 'rb')
@@ -52,7 +52,7 @@ def main():
 		for i, seiyu in enumerate(seiyus):
 
 			# 声優画像取得
-			idx = random.randint(1, ApiManager.FIND_COUNT)
+			idx = random.randint(1, ConfigManager.FIND_COUNT)
 			image_uri = finder.find_image(seiyu.encode('utf-8'), idx)
 			print image_uri
 			
